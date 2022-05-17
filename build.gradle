@@ -1,0 +1,25 @@
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+  }
+}
+
+plugins {
+  id("io.spinnaker.plugin.bundler").version("$spinnakerGradleVersion")
+  id("com.palantir.git-version").version("0.12.2")
+}
+apply plugin: "io.spinnaker.plugin.bundler"
+
+spinnakerBundle {
+  pluginId = "AWS.AccountRegistration"
+  description = "AWS account registration."
+  provider = "https://aws.amazon.com"
+  version = rootProject.version
+}
+
+subprojects {
+  group = "com.amazon.aws.spinnaker.plugin.registration"
+  version = rootProject.version
+}
